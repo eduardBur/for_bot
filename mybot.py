@@ -1,7 +1,7 @@
 ﻿# -*- coding: utf-8 -*-
 import config
 import telebot
-from telebot import types
+#from telebot import types
 import os
 import requests
 URL='https://api.telegram.org/bot460479919:AAHPV8AiwYac0a1HXCcD4V5ET_iEh2SZBdM/setMe'
