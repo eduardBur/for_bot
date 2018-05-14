@@ -3,11 +3,11 @@ import config
 import telebot
 from telebot import types
 import os
-
+import requests
 URL='https://api.telegram.org/bot460479919:AAHPV8AiwYac0a1HXCcD4V5ET_iEh2SZBdM/setMe'
 bot = telebot.TeleBot(config.token)
 #@bot.message_handler(commands=["print"])
-#@bot.message_handler(commands=["start"])
+@bot.message_handler(commands=["start"])
 def main(message):
 	key=types.InlineKeyboardMarkup(row_width=1)
 	but_1=types.InlineKeyboardButton(text="Где проходит", callback_data="Где проходит")
@@ -39,8 +39,6 @@ def inlin(c):
 	elif c.data=="Кто спикеры":
 		global keyGlobal
 		global call
-		global i
-		i=0
 		key=types.InlineKeyboardMarkup(row_width=1)
 		but_1=types.InlineKeyboardButton(text="Принять участие", url="https://t.me/DianaAsryan")
 		but_2=types.InlineKeyboardButton(text="Вернуться в гавное меню", callback_data="Вернуться в главное меню")
@@ -49,30 +47,33 @@ def inlin(c):
 		key.add(but_1,but_2,but_3,but_4)	
 		keyGlobal=key
 		call=bot.send_message(c.message.chat.id, text="lisovec <a href='https://pp.userapi.com/c830509/v830509886/ed711/06Aues0mfks.jpg'>..</a>",parse_mode="HTML", reply_markup=key)
-	
+
 	if c.data=="right":
-		#global i
-		i=i+1
+		global i		
 		if i>2:
 			i=0
 		if i==0:
 			bot.edit_message_text(chat_id=c.message.chat.id, message_id=call.message_id, text="text a,out \nlisovec\n <a href='https://pp.userapi.com/c830509/v830509886/ed711/06Aues0mfks.jpg'>..</a>",parse_mode="HTML",reply_markup=keyGlobal)
+			i=i+1
 		elif i==1:
 			bot.edit_message_text(chat_id=c.message.chat.id, message_id=call.message_id, text="text 2\n <a href='https://pp.userapi.com/c830509/v830509886/ed718/ed__QklVeU4.jpg'>..</a>",parse_mode="HTML",reply_markup=keyGlobal)
+			i=i+1
 		elif i==2:
 			bot.edit_message_text(chat_id=c.message.chat.id, message_id=call.message_id, text="text 3\n <a href='https://pp.userapi.com/c830509/v830509886/ed7cf/H8_OMFEL-xI.jpg'>..</a>",parse_mode="HTML",reply_markup=keyGlobal)
+			i=i+1
 			
 	elif c.data=="left":		
-		i=i-1
 		if i<0:
 			i=2
 		if i==0:
 			bot.edit_message_text(chat_id=c.message.chat.id, message_id=call.message_id, text="text a,out \nlisovec\n <a href='https://pp.userapi.com/c830509/v830509886/ed711/06Aues0mfks.jpg'>..</a>",parse_mode="HTML",reply_markup=keyGlobal)
+			i=i-1
 		elif i==1:
 			bot.edit_message_text(chat_id=c.message.chat.id, message_id=call.message_id, text="text 2\n <a href='https://pp.userapi.com/c830509/v830509886/ed718/ed__QklVeU4.jpg'>..</a>",parse_mode="HTML",reply_markup=keyGlobal)	
-
+			i=i-1
 		elif i==2:
 			bot.edit_message_text(chat_id=c.message.chat.id, message_id=call.message_id, text="text 3\n <a href='https://pp.userapi.com/c830509/v830509886/ed7cf/H8_OMFEL-xI.jpg'>..</a> ",parse_mode="HTML",reply_markup=keyGlobal)
+			i=i-1	
 			
 	elif c.data=="Сколько стоит":
 		key=types.InlineKeyboardMarkup(row_width=1)
@@ -109,7 +110,7 @@ def inlin(c):
 		#key_3.add(but_3)
 		key.add(but_1, but_2, but_22, but_3)
 		bot.send_message(c.message.chat.id, "Рады приветствовать Вас! В преддверии главного праздника весны мы организуем самое масштабное событие для ярких, стильных и успешных женщин!")
-		bot.send_photo(c.message.chat.id, photo='https://pp.userapi.com/c846323/v846323497/41715/HP8XApGfBS8.jpg')
+		bot.send_photo(c.message.chat.id,open('https://pp.userapi.com/c846323/v846323497/41715/HP8XApGfBS8.jpg','rb'))
 		bot.send_message(c.message.chat.id, "Мы знаем, как сделать Вас счастливыми накануне 8 марта! Психология, отношения, красота, здоровый образ жизни, карьера, открытие собственного бизнеса - мы ответим на все Ваши самые сокровенные и животрепещущие вопросы.", reply_markup=key)
 	
 if __name__ == '__main__':
