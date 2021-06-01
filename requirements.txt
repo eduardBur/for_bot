@@ -15,4 +15,4 @@ service-identity==17.0.0
 six==1.11.0
 telebot==0.0.3
 TelegramBotAPI==0.3.2
-urllib3==1.22
+urllib3==1.26.5
